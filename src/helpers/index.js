@@ -10,7 +10,3 @@ export const formatearFecha = (fecha) => {
 
   return fechaNueva.toLocaleDateString("es-ES", opciones);
 };
-
-export const sumar = () => {
-  return <div></div>;
-};
