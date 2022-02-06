@@ -1,12 +1,26 @@
 import CerrarBtn from "../img/cerrar.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Mensaje from "./Mensaje";
 
-const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
+const Modal = ({
+  setModal,
+  animarModal,
+  setAnimarModal,
+  guardarGasto,
+  gastoEditar,
+}) => {
   const [mensaje, setMensaje] = useState("");
   const [nombreGasto, setNombreGasto] = useState("");
   const [cantidad, setCantidad] = useState("");
   const [categoria, setCategoria] = useState("");
+
+  useEffect(() => {
+    if (Object.keys(gastoEditar).length > 0) {
+      setNombreGasto(gastoEditar.nombreGasto);
+      setCantidad(gastoEditar.cantidad);
+      setCategoria(gastoEditar.categoria);
+    }
+  }, []);
 
   const ocultarModal = () => {
     setAnimarModal(false);
